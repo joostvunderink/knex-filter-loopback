@@ -20,8 +20,8 @@ var whereFilter = require('knex-filter-loopback').whereFilter;
 knex('tablename')
 	.where(whereFilter({
 		a: 'b',
-		'c': { '>': 12 },
-		'd': { 'in': [1, 2, 3] },
+		c: { '>': 12 },
+		d: { 'in': [1, 2, 3] },
 		e: null,
 		not: { f: null },
 		or: [
