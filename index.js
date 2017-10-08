@@ -97,7 +97,7 @@ function parseCommand(key, value) {
     };
   }
 
-  if (_.contains(fieldlessCommands, key)) {
+  if (_.includes(fieldlessCommands, key)) {
     return {
       field  : null,
       command: key,
