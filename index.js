@@ -16,7 +16,7 @@ function registerHandler (op, handler, overwrite) {
   handlers[op] = handler;
 }
 
-var fieldlessCommands = ['and', 'or', 'not', '!'];
+var fieldlessCommands = ['and', 'or', 'not', '!', 'related'];
 
 var handlers = {
   '='      : eqHandler,
@@ -35,7 +35,8 @@ var handlers = {
   '!'      : notHandler,
   'not'    : notHandler,
   'and'    : _.partial(logicalHandler, 'where'),
-  'or'     : _.partial(logicalHandler, 'orWhere')
+  'or'     : _.partial(logicalHandler, 'orWhere'),
+  'related' : relationHandler
 };
 
 function eqHandler (field, arg) {
@@ -59,6 +60,14 @@ function arrayArgHandler (op, field, arg) {
 
 function notHandler (field, arg) {
   this.whereNot(whereFilter(arg));
+}
+
+function relationHandler (field, arg) {
+  _.each(arg, function(filter, relation) {
+    this.whereHas(relation, (query) => {
+      query.where(whereFilter(filter));
+    });
+  }, this);
 }
 
 function logicalHandler (op, field, arg) {
