@@ -63,6 +63,9 @@ function notHandler (field, arg) {
 }
 
 function relationHandler (field, arg) {
+  if (typeof this.whereHas === 'undefined') {
+    throw new TypeError('whereHas function is not available, you should use bookshelf-eloquent plugin.');
+  }
   _.each(arg, function(filter, relation) {
     this.whereHas(relation, (query) => {
       query.where(whereFilter(filter));
