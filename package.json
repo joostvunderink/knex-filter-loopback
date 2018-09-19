@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/joostvunderink/knex-filter-loopback/issues"
   },
-  "homepage": "https://github.com/joostvunderink/knex-filter-loopback#readme"
+  "homepage": "https://github.com/joostvunderink/knex-filter-loopback#readme",
+  "engines": {
+    "node": ">=4.0.0"
+  }
 }
