@@ -67,7 +67,7 @@ function relationHandler (field, arg) {
     throw new TypeError('whereHas function is not available, you should use bookshelf-eloquent plugin.');
   }
   _.each(arg, function(filter, relation) {
-    this.whereHas(relation, (query) => {
+    this.whereHas(relation, function(query) {
       query.where(whereFilter(filter));
     });
   }, this);
