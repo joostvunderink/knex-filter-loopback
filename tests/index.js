@@ -1,5 +1,5 @@
 var should = require('should');
-var knex = require('knex')({ dialect: 'pg' });
+var knex = require('knex')({ client: 'pg' });
 var whereFilter = require('../').whereFilter;
 
 describe('knex-filter-loopback', function () {

@@ -81,7 +81,7 @@ function logicalHandler (op, field, arg) {
     this.where(function () {
       _.each(arg, function (arg) {
         this[op](whereFilter(arg));
-      }, this);
+      }.bind(this));
     });
     return;
   }
@@ -94,9 +94,9 @@ function logicalHandler (op, field, arg) {
   this.where(function () {
     _.each(arg, function (arg, commandText) {
       var zo = _.zipObject([commandText], [arg]);
-      console.log('zo: %s', JSON.stringify(zo));
+      // console.log('zo: %s', JSON.stringify(zo));
       this[op](whereFilter(_.zipObject([commandText], [arg])));
-    }, this);
+    }.bind(this));
   });
 }
 
@@ -109,7 +109,7 @@ function parseCommand(key, value) {
     };
   }
 
-  if (_.contains(fieldlessCommands, key)) {
+  if (_.includes(fieldlessCommands, key)) {
     return {
       field  : null,
       command: key,

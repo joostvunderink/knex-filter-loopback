@@ -1,23 +1,22 @@
 {
   "name": "knex-filter-loopback",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Declarative filtering for knex.js based on the Loopback Where Filter.",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "dependencies": {
-    "lodash": "^3.10.0"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "coveralls": "^2.11.3",
-    "istanbul": "^0.3.17",
-    "knex": "^0.8.6",
-    "mocha": "^2.2.5",
-    "should": "^7.0.2"
+    "istanbul": "^0.4.5",
+    "knex": "^0.19.1",
+    "mocha": "^6.2.0",
+    "should": "^13.2.3"
   },
   "scripts": {
-    "test": "istanbul cover node_modules/mocha/bin/_mocha -- tests && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "node_modules/mocha/bin/_mocha tests"
   },
   "repository": {
     "type": "git",
